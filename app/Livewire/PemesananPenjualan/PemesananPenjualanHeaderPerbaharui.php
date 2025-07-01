@@ -153,7 +153,7 @@ class PemesananPenjualanHeaderPerbaharui extends Component
       $this->headerForm->attributes()
     )['headerForm'];
 
-    $halaman = 'pemesanan_penjualan-simpan';
+    $halaman = 'tr_pemesanan_penjualan-simpan';
     $msCabangId = $validatedHeaderForm['ms_cabang_id'];
     $statusId = $validatedHeaderForm['status_option'];
     $halamanId = \App\Models\HakAkses::where('nama', $halaman)->value('id');
@@ -186,7 +186,6 @@ class PemesananPenjualanHeaderPerbaharui extends Component
             'ms_rak_id' => $detail['ms_rak_id'],
             'catatan' => $detail['catatan'],
             'qty' => $detail['qty'],
-            'nomor' => $detail['nomor'],
             'tgl_dibuat' => $detail['tgl_dibuat'],
             'tgl_diupdate' => now(),
             'dibuat_oleh' => $detail['dibuat_oleh'],
@@ -264,7 +263,7 @@ class PemesananPenjualanHeaderPerbaharui extends Component
 
   public function buat()
   {
-    $halamanId = \App\Models\HakAkses::where('nama', 'pemesanan_penjualan-buat')->value('id');
+    $halamanId = \App\Models\HakAkses::where('nama', 'tr_pemesanan_penjualan-buat')->value('id');
     \Illuminate\Support\Facades\Gate::authorize('buat', [
       \App\Models\HakAkses::class,
       $halamanId,
@@ -273,24 +272,19 @@ class PemesananPenjualanHeaderPerbaharui extends Component
 
     $this->headerForm->reset();
     $this->detailForm->reset();
-
-    $nomorHeaderTerakhir = \Illuminate\Support\Facades\DB::table('tr_pemesanan_penjualan_header')->max('nomor') ?? 0;
-    $this->headerForm->nomor = $nomorHeaderTerakhir + 1;
   }
 
   public function buatDetail()
   {
     $this->detailForm->reset();
     $this->modalDetail = true;
-    $nomorDetailTerakhir = \Illuminate\Support\Facades\DB::table('tr_pemesanan_penjualan_detail')->max('nomor') ?? 0;
-    $this->detailForm->nomor = $nomorDetailTerakhir + 1;
   }
 
 
 
   public function tampil()
   {
-    $halaman = 'pemesanan_penjualan-tampil';
+    $halaman = 'tr_pemesanan_penjualan-tampil';
     $halamanId = \App\Models\HakAkses::where('nama', $halaman)->value('id');
 
     \Illuminate\Support\Facades\Gate::authorize('lihat', [
@@ -305,7 +299,7 @@ class PemesananPenjualanHeaderPerbaharui extends Component
 
   public function edit()
   {
-    $halaman = 'pemesanan_penjualan-edit';
+    $halaman = 'tr_pemesanan_penjualan-edit';
     $halamanId = \App\Models\HakAkses::where('nama', $halaman)->value('id');
 
     \Illuminate\Support\Facades\Gate::authorize('edit', [
@@ -324,7 +318,7 @@ class PemesananPenjualanHeaderPerbaharui extends Component
 
   public function update()
   {
-    $halaman = 'pemesanan_penjualan-update';
+    $halaman = 'tr_pemesanan_penjualan-update';
 
     $validatedHeaderForm = $this->validate(
       $this->headerForm->rules(),
@@ -368,7 +362,6 @@ class PemesananPenjualanHeaderPerbaharui extends Component
   {
     return [
       ['key' => 'action', 'label' => 'Action', 'sortable' => false, 'class' => 'whitespace-nowrap border-1 border-l-1 border-gray-300 dark:border-gray-600 text-center'],
-      ['key' => 'nomor', 'label' => '#', 'sortable' => false, 'class' => 'whitespace-nowrap  border-1 border-l-1 border-gray-300 dark:border-gray-600 text-right'],
       ['key' => 'id', 'label' => 'ID', 'sortBy' => 'id', 'class' => 'whitespace-nowrap  border-1 border-l-1 border-gray-300 dark:border-gray-600 text-left'],
       ['key' => 'ms_barang_id', 'label' => 'Barang ID', 'sortBy' => 'ms_barang_id', 'class' => 'whitespace-nowrap  border-1 border-l-1 border-gray-300 dark:border-gray-600 text-left'],
       ['key' => 'catatan', 'label' => 'Catatan', 'sortBy' => 'catatan', 'class' => 'whitespace-nowrap  border-1 border-l-1 border-gray-300 dark:border-gray-600 text-center'],
@@ -395,7 +388,6 @@ class PemesananPenjualanHeaderPerbaharui extends Component
       });
 
     $paginator = $query
-      // ->orderBy('nomor', 'asc')
       ->paginate(20);
 
     $start = ($paginator->currentPage() - 1) * $paginator->perPage();

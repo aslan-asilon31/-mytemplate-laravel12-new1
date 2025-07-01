@@ -50,7 +50,7 @@ class PemesananPenjualanHeaderDaftar extends Component
 
   public function boot()
   {
-    $halamanId = \App\Models\HakAkses::where('nama', 'pemesanan_penjualan-daftar')->value('id');
+    $halamanId = \App\Models\HakAkses::where('nama', 'tr_pemesanan_penjualan-daftar')->value('id');
 
     \Illuminate\Support\Facades\Gate::authorize('daftar', [
       \App\Models\HakAkses::class,
@@ -65,7 +65,6 @@ class PemesananPenjualanHeaderDaftar extends Component
   {
     return [
       ['key' => 'action', 'label' => 'Action', 'sortable' => false, 'class' => 'whitespace-nowrap border-1 border-l-1 border-gray-300 dark:border-gray-600 text-center'],
-      ['key' => 'nomor', 'label' => '#', 'sortable' => false, 'class' => 'whitespace-nowrap  border-1 border-l-1 border-gray-300 dark:border-gray-600 text-right'],
       ['key' => 'id', 'label' => 'ID', 'sortBy' => 'id', 'class' => 'whitespace-nowrap  border-1 border-l-1 border-gray-300 dark:border-gray-600 text-left'],
       ['key' => 'nama', 'label' => 'Nama Pemesanan Penjualan', 'sortBy' => 'nama', 'class' => 'whitespace-nowrap  border-1 border-l-1 border-gray-300 dark:border-gray-600 text-left'],
       ['key' => 'ms_pelanggan_id', 'label' => 'ID Pelanggan', 'sortBy' => 'ms_pelanggan_id', 'class' => 'whitespace-nowrap  border-1 border-l-1 border-gray-300 dark:border-gray-600 text-left'],
@@ -96,7 +95,6 @@ class PemesananPenjualanHeaderDaftar extends Component
       });
 
     $paginator = $query
-      ->orderBy('nomor', 'asc')
       // ->whereIn('ms_cabang_id', array_unique($this->aksesGudang()->pluck('ms_cabang_id')->toArray()))
       ->paginate(20);
 

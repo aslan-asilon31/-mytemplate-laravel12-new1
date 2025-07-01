@@ -3,12 +3,14 @@
   <div class="flex items-center justify-center bg-white text-black lg:flex-1">
     <!-- Gambar untuk Mobile -->
     <div class="max-w-md text-center lg:hidden my-4">
-      <img src="{{ asset('brand-no-logo.png') }}" class="w-48" alt="" srcset="">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/e/eb/Welcomedd.jpg" class="w-48" alt=""
+        srcset="">
     </div>
 
     <!-- Gambar untuk Desktop -->
     <div class="hidden lg:flex items-center justify-center flex-1">
-      <img src="{{ asset('brand-no-logo.png') }}" width="524.67004" height="531.39694" alt="" srcset="">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/e/eb/Welcomedd.jpg" width="524.67004" height="531.39694"
+        alt="" srcset="">
     </div>
   </div>
 

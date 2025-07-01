@@ -56,7 +56,7 @@ class PemesananPenjualanDetailDaftar extends Component
 
   public function mount()
   {
-    $this->permission('pemesanan_penjualan-list');
+    $this->permission('tr_pemesanan_penjualan-list');
   }
 
   public function fetchIdFromHeader() {}
@@ -97,7 +97,6 @@ class PemesananPenjualanDetailDaftar extends Component
       });
 
     $paginator = $query
-      // ->orderBy('nomor', 'asc')
       ->where('tr_pemesanan_penjualan_header_id', session('PemesananPenjualanHeaderId'))
       ->paginate(20);
 

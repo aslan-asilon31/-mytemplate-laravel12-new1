@@ -36,6 +36,7 @@ class MsCabangDaftar extends Component
 
   public bool $filterDrawer;
 
+
   public array $sortBy = ['column' => 'nama', 'direction' => 'desc'];
 
   #[Url(except: '')]

@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('ms_file_jenis', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->uuid('ms_file_jenis_id');
-            $table->foreign('ms_file_jenis_id')->references('id')->on('ms_file_jenis')->onDelete('cascade')->onUpdate('cascade');
+            $table->uuid('ms_file_id');
+            $table->foreign('ms_file_id')->references('id')->on('ms_file')->onDelete('cascade')->onUpdate('cascade');
             $table->string('nama');
             $table->integer('nomor');
             $table->string('dibuat_oleh', 255)->nullable()->index();

@@ -128,7 +128,7 @@ class PemesananPenjualanDetailPerbaharui extends Component
 
   public function buat()
   {
-    $this->permission('pemesanan_penjualan-buat');
+    $this->permission('tr_pemesanan_penjualan-buat');
     $this->masterForm->reset();
     // dd('cek1');
 
@@ -144,9 +144,10 @@ class PemesananPenjualanDetailPerbaharui extends Component
     $this->masterForm->fill($masterData);
   }
 
-  public function edit(
+  public function edit()
   {
-    $this->permission('pemesanan_penjualan-edit');
+
+    $this->permission('tr_pemesanan_penjualan-edit');
 
     $this->isReadonly = false;
     $this->isDisabled = false;

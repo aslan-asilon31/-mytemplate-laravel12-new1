@@ -85,7 +85,6 @@ class MsCabangPerbaharui extends Component
       $this->masterForm->attributes()
     )['masterForm'];
 
-
     \Illuminate\Support\Facades\DB::beginTransaction();
     try {
 
