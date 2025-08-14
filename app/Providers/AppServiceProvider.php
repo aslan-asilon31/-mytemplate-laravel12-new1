@@ -3,9 +3,10 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Gate;
 use App\Models\HakAkses;
 use App\Policies\HakAksesKebijakan;
-use Illuminate\Support\Facades\Gate;
+
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -22,7 +23,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        \Illuminate\Support\Facades\Auth::shouldUse('pegawai');
+        \Illuminate\Support\Facades\Auth::shouldUse('user');
         Gate::policy(HakAkses::class, HakAksesKebijakan::class);
     }
 }
